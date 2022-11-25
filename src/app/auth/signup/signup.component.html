@@ -1,0 +1,51 @@
+<div class="SignUp">
+    <div class="signupContainer">
+        <div class="leftSection" >
+            <h1>Welcome to StudCGPA</h1>
+            <p>A few clicks from calculating<br/> and knowing your grades</p>
+            <img src="../../../assets/Images/signupmockup.svg">
+        </div>
+        <div class="rightSection">
+            <h1>Let's Get Started</h1>
+            <form #myform="ngForm" (ngSubmit)="submit()" class="formBox" action="">
+                <div class="col-2">
+                 <input type="text" placeholder="Firstname" [(ngModel)]="form.firstName" id="firstname" name="firstname">
+                 <input type="text" placeholder="Lastname" [(ngModel)]="form.lastName" name="lastname">
+                </div>
+                <div class="col-2">
+                 <input type="text" placeholder="Email" [(ngModel)]="form.email" name="email">
+                 <input type="password" placeholder="Password" [(ngModel)]="form.password" id="password" name="password">
+                </div>
+                <div class="col-2">
+                    <!-- <input type="text" placeholder="Department" [(ngModel)]="form.department" id="department" name="department"> -->
+                    <select class="form-control" name="course_code" id="course_code" [(ngModel)]="form.department">
+                        <option>Select Department</option>
+                        <option>Computer Science</option>
+                        <option>Pharmacy</option>
+                        <option>Medicine</option>
+                        <option>History</option>
+                        <option>Agriculture</option>
+                    </select>
+                    <input type="number" placeholder="Level" [(ngModel)]="form.level" id="level" name="level">
+                </div>
+                 <div class="col-2">
+                 <input type="text" placeholder="Matric No" [(ngModel)]="form.matricno" id="matricno" name="matricno">
+                 <select class="form-control" name="course_code" id="course_code" [(ngModel)]="form.institution">
+                    <option>Select your Institution</option>
+                    <option>IETECH</option>
+                    <option>UNN</option>
+                    <option>UI</option>
+                    <option>UNILAG</option>
+                    <option>OAU</option>
+                </select>
+                 <!-- <input type="text" placeholder="Institution" [(ngModel)]="form.institution" id="institution" name="institution"> -->
+                 </div>
+                 <div class="col-2">
+                    <button type="submit" class="btn-create">Create Account</button>
+                    <div class="btn-white">Have an account Already?<span><a  href="/login"> Login</a></span></div>   
+                 </div>
+             </form>
+        </div>
+    </div>
+     
+</div>

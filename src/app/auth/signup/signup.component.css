@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* .SignUp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.signupContainer{
+    display: flex;
+    width: 100%;
+    font-family: Inter;
+}
+.leftSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    background: #D8E5E9;
+    min-height: 100vh;
+}
+.rightSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    background: #ffffff;
+    min-height: 100vh;
+}
+.formBox{
+    width: 90%;
+    min-height: auto;
+}
+.col-2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+input,
+select{
+width: 43%;
+height: 2rem;
+padding: 10px 20px;
+margin: 0.9rem;
+background: #EDEEFF;
+border-radius: 8px;
+border: none;
+}  
+select{
+    padding: 30px auto;
+}
+.btn-create{
+width: 43%;
+height: 2rem;
+padding: 0px 20px;
+margin: 0.8rem;
+background: #3861FB;
+color: #ffffff;
+border-radius: 8px;
+border: none;
+font-size: 1.3rem;
+}
+.btn-white{
+    width: 43%;
+    padding: 12px 25px;
+    margin: 0.9rem;
+    height: 2rem;  
+}

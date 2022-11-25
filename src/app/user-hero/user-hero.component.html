@@ -1,0 +1,79 @@
+<div class="heroContainer">
+
+    <div class="hero-text">
+        <h1>Welcome {{displayUser.firstName}} !!</h1>
+        <p>Enter your course codes (e.g. COS 101) in the first column. 
+            Enter the corresponding score i.e. what you scored in the course, 
+            in the middle column. Type the exact score e.g. 75 instead of the grade A. 
+            In the third column,enter the corresponding course units.</p>
+    </div>
+    <!-- <form action=""></form> -->
+    <div class="inputBox">
+        <div class="inputContainer">
+            <select class="form-control" name="course_code" id="course_code">
+                <option>COS 101</option>
+                <option>CSS 201</option>
+                <option>CSC 221</option>
+                <option>CSC 351</option>
+                <option>SSC 221</option>
+            </select>
+
+            <!--   -->
+            
+            <!-- <input type="text" id="course_code" placeholder="COURSE CODE (eg COS 101)"> -->
+            <input type="number" id="score" placeholder="SCORE" >
+            <input type="number" id="unit" placeholder="UNITS" >
+        </div>
+        <div class="btn-container">
+            <button class="btn-blue" (click)="addCourses()">+Add Course</button>
+            <button class="btn-orange" (click)="calcuateCgpa()">CACULATE</button>
+    
+        </div>
+    </div>
+
+    <!---Tables-->
+    <div class="tableContainer">
+        <table>
+            <th>S/N</th>
+            <th>Course Code</th>
+            <th>Unit</th>
+            <th>Score</th>
+            <th>Points</th>
+            <th>Total Unit Points</th>
+            
+            <tr *ngFor = "let course of Courses; let i = index;">
+                <td>{{i+1}}</td>
+                <td>{{course.courseCode}}</td>
+                <td>{{course.unit}}</td>
+                <td>{{course.score}}</td>
+                <td>{{course.point}}</td>
+                <td>{{course.point * course.unit}}</td>
+                <td style="color: red; font-weight:bold" (click)="remove(course.id)">x</td>
+            </tr> 
+          </table>
+    </div>
+    <div class="scoreContainer">
+        <div class="average">
+            <p>Your Score:</p>
+            <p>{{score}}</p>
+        </div>
+        <div>
+            <button class="btn-green" (click) ="save()">SAVE</button>
+        </div>
+    </div>
+    <div class="heroInfo">
+        <p>This CGPA tool is for students in any tertitary institution that uses the 5.0 scale. That is, any student in any part of the world can use it.
+
+            Please also note that you need to make sure of your scoring system. For this CGPA calculator to work for you, the following have to apply.
+            </p>
+            <ul class="instruction">
+                <li>The F (Fail) grade must be bewteen 0 and 39.</li>
+                <li>E for your school must be between 40 and 44 out of a total of 100 marks.</li>
+                <li>D is graded as scores from 45 to 49.</li>
+                <li>C is any score bewteen 50 and 59</li>
+                <li>B is a score from 60 to 69, and finally,</li>
+                <li>A is any score from 70 to 100 marks.</li>
+            </ul>
+    </div>
+</div>
+

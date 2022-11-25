@@ -1,0 +1,75 @@
+<ng-container>
+    <div class="headerContainer">
+        <div class="logo" routerLink="/">StudCGPA</div>
+        <div class="nav-menu">
+            <li class="nav-link"><a routerLink="/login">Logout</a></li>
+    
+        </div>
+    </div>
+</ng-container>
+<div class="heroContainer">
+    <form [formGroup]="calForm" (ngSubmit)="addCourses()">
+    <!-- <form action=""></form> -->
+    <div class="inputBox">
+        <div class="inputContainer">
+            <select class="form-control" name="course_code" id="course_code" formControlName="course">
+                <option>Select course code</option>
+                <option>COS 101</option>
+                <option>CSS 201</option>
+                <option>CSC 221</option>
+                <option>CSC 351</option>
+                <option>SSC 221</option>
+            </select> <br/>
+<span *ngIf="calForm.controls['course'].dirty && calForm.hasError('required', 'course')" style="font-size: 30px;"
+            >Please select your course code</span>
+            <!-- <input type="text" id="course_code" placeholder="COURSE CODE (eg COS 101)"> -->
+            <input type="number" id="score" placeholder="SCORE" formControlName="score"> <br/>
+            <span *ngIf="calForm.controls['score'].dirty && calForm.hasError('required', 'score')" style="font-size: 30px;"
+            >Please input your score</span>
+            <input type="number" id="unit" placeholder="UNITS" formControlName="unit"> <br/>
+            <span *ngIf="calForm.controls['unit'].dirty && calForm.hasError('required', 'unit')" style="font-size: 30px;"
+            class="textValidate">Please input your score</span>
+            
+        </div>
+        <div class="btn-container">
+            <button type="submit" class="btn-blue" [disabled]="!calForm.valid">+Add Course</button>
+            <!-- <button class="btn-blue" (click)="addCourses()">+Add Course</button> -->
+            <button class="btn-orange" (click)="calcuateCgpa()">CACULATE</button>
+    
+        </div>
+    </div>
+</form>
+
+    <!---Tables-->
+    <div class="tableContainer">
+        <table>
+            <th>S/N</th>
+            <th>Course Code</th>
+            <th>Unit</th>
+            <th>Score</th>
+            <th>Points</th>
+            <th>Total Unit Points</th>
+
+            <tr *ngFor = "let course of Courses; let i = index;">
+              <td>{{i+1}}</td>
+              <td>{{course.courseCode}}</td>
+              <td>{{course.unit}}</td>
+              <td>{{course.score}}</td>
+              <td>{{course.point}}</td>
+              <td>{{course.point * course.unit}}</td>
+              <td style="color: red; font-weight:bold" (click)="remove(course.id)">x</td>
+            </tr> 
+          </table>
+    </div>
+    <div class="scoreContainer">
+        <div class="average">
+            <p>Your Score:</p>
+            <p>{{score}}</p>
+        </div>
+        <div>
+            <button class="btn-green" (click) ="save()">SAVE</button>
+        </div>
+    </div>
+   
+</div>
+

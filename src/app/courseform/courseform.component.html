@@ -1,0 +1,43 @@
+<h1 class="hero-heading">Welcome, Kindly register your Course </h1>
+<div class="inputBox">
+    <div class="inputContainer">
+        <input type="text" id="course_code" placeholder="COURSE CODE (eg COS 101)">
+        <input type="number" id="unit" placeholder="UNITS">
+    </div>
+    <div class="btn-container">
+        <button class="btn-blue" (click)="addCourses()">+Add Course</button>
+        <!-- <button class="btn-orange" (click)="calcuateCgpa()">CACULATE</button> -->
+    </div>
+</div>
+<div class="course_form">
+    <header></header>
+    <!---Tables-->
+    <div class="tableContainer">
+        <table>
+            <th>S/N</th>
+            <th>Course Code</th>
+            <th>Unit</th>
+
+            <tr *ngFor = "let course of Courses; let i = index;">
+              <td>{{i+1}}</td>
+              <td>{{course.courseCode}}</td>
+              <td>{{course.unit}}</td>
+              <td style="color: red; font-weight:bold" (click)="remove(course.id)">x</td>
+            </tr> 
+          </table>
+    </div>
+
+    <div class="scoreContainer">
+        <div class="average">
+            <p>Number of Courses:</p>
+            <p>{{Courses.length}}</p>
+        </div>
+        <div class="average">
+            <p>Total Number of Units:</p>
+            <p>{{TUnits}}</p>
+        </div>
+        <div>
+            <button class="btn-green" (click) ="save()">SAVE</button>
+        </div>
+    </div>
+</div>
