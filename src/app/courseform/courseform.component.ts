@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentCourses } from '../types/Courses';
 import { StudentCourse } from '../types/Course';
 import { AuthapiService } from '../services/authapi.service';
 
@@ -19,7 +20,10 @@ export class CourseformComponent implements OnInit {
   score: any;
   index: any;
   TUnits: any;
-  insertObj: any;
+  insertObj: StudentCourses = {
+    userId: 0,
+    courses: '',
+  };
 
   // totalPoint:number = 0;
   // totalUnits:number = 0;
@@ -104,14 +108,20 @@ export class CourseformComponent implements OnInit {
     if (window.location.pathname.includes('registerCourses')) {
       //var storedCourses = userCourses !== null ? JSON.parse(userCourses) : this.newCourse;
       //call a service to insert
-      var id = window.location.pathname.replace('/registerCourses/', '');
+      console.log(localStorage.getItem("userid"))
+      var id = JSON.parse(localStorage.getItem("userid") || '0')
       console.log(id);
-      this.insertObj.userId = parseInt(id);
-      this.insertObj.courses = this.Courses;
-      this.authapi.Insert(this.insertObj).subscribe((resp) => {
-        alert(resp.message);
-        //localStorage.clear();
-      });
+      if(id > 0){
+        console.log("hereeeeeeeeeeeeeeeeeee")
+        this.insertObj.userId = parseInt(id);
+        this.insertObj.courses = this.Courses;
+        console.log(this.insertObj)
+        this.authapi.Insert(this.insertObj).subscribe((resp) => {
+          alert(resp.message);
+          //localStorage.clear();
+        });
+      }
+     
     } else {
       alert('You need to login before you can save');
     }

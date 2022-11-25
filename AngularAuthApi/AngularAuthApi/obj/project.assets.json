@@ -6158,11 +6158,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\source\\repos\\myprojs\\AngularAuthApi\\AngularAuthApi\\AngularAuthApi.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Desktop\\studCGPA\\AngularAuthApi\\AngularAuthApi\\AngularAuthApi.csproj",
       "projectName": "AngularAuthApi",
-      "projectPath": "C:\\Users\\USER\\source\\repos\\myprojs\\AngularAuthApi\\AngularAuthApi\\AngularAuthApi.csproj",
+      "projectPath": "C:\\Users\\USER\\Desktop\\studCGPA\\AngularAuthApi\\AngularAuthApi\\AngularAuthApi.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\source\\repos\\myprojs\\AngularAuthApi\\AngularAuthApi\\obj\\",
+      "outputPath": "C:\\Users\\USER\\Desktop\\studCGPA\\AngularAuthApi\\AngularAuthApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6236,7 +6236,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -86,6 +86,7 @@ namespace AngularAuthApi.Controllers
       if (model == null)
         return BadRequest();
       var user = await _authContext.Users.FindAsync(model.UserId);
+      var userRegisteredCourses = await _authContext.Student_Courses.Where(x => x.User.Id == user.Id).ToListAsync();
       foreach (var course in model.Courses)
       {
         var student_courses = new Student_Course
@@ -95,7 +96,17 @@ namespace AngularAuthApi.Controllers
           Score = course.Score,
           Unit = course.Unit
         };
-        await _authContext.Student_Courses.AddAsync(student_courses);
+        if(userRegisteredCourses.Any(course => course.CourseCode == student_courses.CourseCode && course.User == student_courses.User))
+        {
+          var studentCourse = await _authContext.Student_Courses.Where(x => x.User == user && x.CourseCode == student_courses.CourseCode).FirstOrDefaultAsync();
+          studentCourse.Score = course.Score;
+          _authContext.Entry(studentCourse).State = EntityState.Modified;
+        }
+        else
+        {
+          await _authContext.Student_Courses.AddAsync(student_courses);
+
+        }
       }
 
       await _authContext.SaveChangesAsync();

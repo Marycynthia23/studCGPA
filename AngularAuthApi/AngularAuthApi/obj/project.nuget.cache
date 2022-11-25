@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WwNf3oGdcDMAbdtrNlYYoJpZOQbGQJH7JfDv2tiFTnokozteVgJcsvKbx5qtlcn/wG/TQsGT1Jk5/0q6TYxl3g==",
+  "dgSpecHash": "TjnSqLVsHKu9X3lRyO81UJsbLHWjz13leBOpuY52ZFUuyne9wGsdhmzv2n0v6wUWHrD7Ql+hFc9Guqs0t1jKTw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\source\\repos\\myprojs\\AngularAuthApi\\AngularAuthApi\\AngularAuthApi.csproj",
+  "projectFilePath": "C:\\Users\\USER\\Desktop\\studCGPA\\AngularAuthApi\\AngularAuthApi\\AngularAuthApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.30\\microsoft.aspnetcore.authentication.jwtbearer.3.1.30.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

@@ -38,6 +38,7 @@ loginForm!: FormGroup
       console.log(resp.user, "CHECKING USER")
       
       this.toast.success({detail: "Logged in Successfully", summary: "You're now logged in", duration: 4000})
+      localStorage.setItem("userid", `${resp.user.id}`)
       this.router.navigate([`home/${resp.user.id}`])
     }
     else{

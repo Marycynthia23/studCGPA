@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit {
+  userId: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem("userid")
+    console.log(this.userId)
   }
 
 }

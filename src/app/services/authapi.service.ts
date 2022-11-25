@@ -86,12 +86,16 @@ return this.http.get<Signup>(this.baseURL + '/getStudentById?Id=' + id).pipe(
     return response;
   }
 
-  GetCourseCode(): Observable <CourseCode[]> {
-    return this.http.get<CourseCode[]>(this.baseURL).pipe(
-      map((data) => {
-        return data;
-      })
+  GetCourseCode(id: number): Observable<ApiResponse> {
+    let options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    console.log(id)
+    const response = this.http.get<any>(
+      `${this.baseURL}/getcourse?id=${id}`, 
+   
     );
-
+    console.log(response)
+    return response;
   }
 }

@@ -10,22 +10,20 @@
     <!-- <form action=""></form> -->
     <div class="inputBox">
         <div class="inputContainer">
-            <select class="form-control" name="course_code" id="course_code">
-                <option>COS 101</option>
-                <option>CSS 201</option>
-                <option>CSC 221</option>
-                <option>CSC 351</option>
-                <option>SSC 221</option>
+            <select class="form-control" name="course_code" id="course_code" (change)="myFunc()">
+                <option value="">---registered courses---</option>
+                <option *ngFor = "let course of Courses" [value]="course.courseCode">{{course.courseCode}}</option>
             </select>
 
             <!--   -->
             
             <!-- <input type="text" id="course_code" placeholder="COURSE CODE (eg COS 101)"> -->
+            <input type="number" readonly id="unit" value="{{unit}}" placeholder="UNITS" >
+
             <input type="number" id="score" placeholder="SCORE" >
-            <input type="number" id="unit" placeholder="UNITS" >
         </div>
         <div class="btn-container">
-            <button class="btn-blue" (click)="addCourses()">+Add Course</button>
+            <button class="btn-blue" (click)="updateScore()">+Add Score</button>
             <button class="btn-orange" (click)="calcuateCgpa()">CACULATE</button>
     
         </div>
@@ -55,7 +53,7 @@
     <div class="scoreContainer">
         <div class="average">
             <p>Your Score:</p>
-            <p>{{score}}</p>
+            <p>{{score}} / 5.00</p>
         </div>
         <div>
             <button class="btn-green" (click) ="save()">SAVE</button>
