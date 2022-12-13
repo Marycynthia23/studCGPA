@@ -29,7 +29,8 @@ width: 96%;
 
 }
 input[type='text'],
-input[type='number']{
+input[type='number'],
+.form-control{
 width: 250px;
 padding: 10px;
 background: #EDEEFF;

@@ -7,28 +7,39 @@
             In the third column,enter the corresponding course units.</p>
     </div>
     <!-- <form action=""></form> -->
+    <form [formGroup]="form" (ngSubmit)="addCourses()">
+        <p class="formerror" *ngIf="form.valid">Fill in all Inputs</p>
     <div class="inputBox">
-        
         <div class="inputContainer">
-            <select class="form-control" name="course_code" id="course_code">
-                <option>Select course code</option>
-                <option>COS 101</option>
-                <option>CSS 201</option>
-                <option>CSC 221</option>
-                <option>CSC 351</option>
-                <option>SSC 221</option>
-            </select>
-            <!-- <input type="text" id="course_code" placeholder="COURSE CODE (eg COS 101)"> -->
-            <input type="number" id="score" placeholder="SCORE">
-            <input type="number" id="unit" placeholder="UNITS" >
+            <div>
+
+                <input type="text" formControlName="course" ngModel maxlength="7" id="course_code" placeholder="COURSE CODE (eg COS 101)">
+            
+                <p class="formCourseerror" *ngIf="form.controls['course'].dirty && form.hasError('required', 'course')">Course code is required</p>
+            </div> 
+            
+            <div>
+
+                <input type="number" formControlName="score"  id="score" placeholder="SCORE"  >
+                <p class="formCourseerror" *ngIf="form.controls['score'].dirty && form.hasError('required', 'score')">Score is required</p>
+            </div>
+            <div>
+
+                <input type="number" formControlName="unit"  id="unit" placeholder="UNITS" >
+                <p class="formCourseerror" *ngIf="form.controls['unit'].dirty && form.hasError('required', 'unit')">Unit is required</p>
+            </div>
         </div>
         <div class="btn-container">
-            <button class="btn-blue" (click)="addCourses()">+Add Course</button>
-            <button class="btn-orange" (click)="calcuateCgpa()">CACULATE</button>
-    
+            
+            
+            
+            
+            <button type="submit" class="btn-blue">+Add Course</button>
         </div>
     </div>
+</form>
 
+        
     <!---Tables-->
     <div class="tableContainer">
         <table>
@@ -56,6 +67,7 @@
             <p>{{score}}</p>
         </div>
         <div>
+            <button class="btn-orange" (click)="calcuateCgpa()">CACULATE</button>
             <button class="btn-green" (click) ="save()">SAVE</button>
         </div>
     </div>

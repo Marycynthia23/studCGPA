@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentCourse } from '../types/Course';
 
 @Component({
@@ -17,7 +18,7 @@ export class HerosectionComponent implements OnInit {
   };
   score: any;
   index: any;
-
+form!: FormGroup;
 
 
 
@@ -29,7 +30,13 @@ export class HerosectionComponent implements OnInit {
 
   // console.log(sum);
 
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      course: ["", Validators.required],
+      unit: ["", Validators.required, Validators.max(99)],
+      score: ["", Validators.required],
+    })
+  }
 
   ngOnInit(): void {
     this.score = 0;
@@ -114,7 +121,7 @@ getScorePoint(){
     console.log(`${this.score} This function returns 5 for this score`)
     return 5;
   }
-  if(this.score>= 60){
+  if(this.score>=60){
     console.log(`${this.score} This function returns 4 for this score`)
     return 4;
   }
@@ -127,7 +134,7 @@ getScorePoint(){
     return 2;
   }
   if(this.score>= 40){
-    return 5;
+    return 1 ;
   }
   return 0;
 }

@@ -35,7 +35,7 @@ export class CalculatecgpaComponent implements OnInit {
     password: '',
     department: '',
     level: '',
-    matricno: '',
+    marticNo: '',
     institution: ''
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { AuthapiService } from 'src/app/services/authapi.service';
@@ -17,16 +18,34 @@ form: Signup ={
   password: '',
   department: '',
   level: '',
-  matricno: '',
+  marticNo: '',
   institution: ''
 }
+
+regForm!: FormGroup;
   res: any;
-  constructor(private userService: AuthapiService, private route: Router, private toast: NgToastService) { }
+  constructor(private userService: AuthapiService, private route: Router, private toast: NgToastService, private formBuilder: FormBuilder) {
+
+    this.regForm = this.formBuilder.group({
+      firstName: ["", Validators.required],
+password: ["", Validators.required],
+lastName: ["", Validators.required],
+institution: ["", Validators.required],
+department: ["", Validators.required],
+level: ["", Validators.required],
+marticNo: ["", Validators.required],
+email: ["", Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
+
+    })
+   }
 
   ngOnInit(): void {
   }
 submit(){
-  this.userService.signUp(this.form).subscribe({
+
+  console.log('***', this.regForm.value);
+  this.regForm.value.marticNo = this.regForm.value.marticNo == null ? 0 : parseInt(this.regForm.value.marticNo);
+  this.userService.signUp(this.regForm.value).subscribe({
     next: (response) => {
       this.form = response;
       this.toast.success({detail: "User Registered", summary: "succesfull", duration: 4000})  

@@ -24,6 +24,8 @@
               <td>{{course.unit}}</td>
               <td style="color: red; font-weight:bold" (click)="remove(course.id)">x</td>
             </tr> 
+
+            
           </table>
     </div>
 
@@ -37,7 +39,8 @@
             <p>{{TUnits}}</p>
         </div>
         <div>
-            <button class="btn-green" (click) ="save()">SAVE</button>
+            <button [disabled]="Courses.length == 0" class="btn-green" (click)="save()">SAVE</button>
+            <!-- <button class="btn-green" (click)="save()">SAVE</button> -->
         </div>
     </div>
 </div>

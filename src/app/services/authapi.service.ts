@@ -20,6 +20,7 @@ export class AuthapiService {
   constructor(private http : MyHttpService) { }
 
   signUp(userObj: any){
+    console.log('***', userObj)
     return this.http.post<any>(`${this.baseURL}/register`, userObj)
   }
 

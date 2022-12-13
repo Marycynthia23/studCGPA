@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StudentCourses } from '../types/Courses';
 import { StudentCourse } from '../types/Course';
 import { AuthapiService } from '../services/authapi.service';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-courseform',
@@ -33,7 +35,7 @@ export class CourseformComponent implements OnInit {
 
   // console.log(sum);
 
-  constructor(private authapi : AuthapiService) {}
+  constructor(private authapi : AuthapiService, private route: Router, private toast: NgToastService) {}
 
   ngOnInit(): void {
     this.score = 0;
@@ -57,10 +59,6 @@ export class CourseformComponent implements OnInit {
       point: 0,
     };
 
-    if(this.Courses.map((course) => course.courseCode).includes(this.newCourse.courseCode) ) {
-      alert("This course has already been registered.")
-      return;
-    }else{
       console.log('yeaaah!!', this.newCourse);
       if (this.newCourse) {
         console.log('yeaaah!!', this.newCourse);
@@ -76,7 +74,6 @@ export class CourseformComponent implements OnInit {
       } else {
         alert('Please enter courses');
       }
-    }
 
   }
 
@@ -117,10 +114,28 @@ export class CourseformComponent implements OnInit {
         this.insertObj.courses = this.Courses;
         console.log(this.insertObj)
         this.authapi.Insert(this.insertObj).subscribe((resp) => {
-          alert(resp.message);
+          // alert(resp.message);
+          if(this.Courses) {
+            this.toast.success({
+              detail: "SAVED", summary: "Course has been saved", duration: 3000
+            })
+          }else{
+            
+            alert("The Course already Exist");
+            this.toast.error({
+              detail: "ERROR", summary: "The Course already Exist", duration: 3000
+            })
+          }
+          
+          this.route.navigate([`home/${id}`])
           //localStorage.clear();
         });
       }
+
+      //NOM
+      // if(this.score >= 40){
+      //   alert("Your can not add a merited course again")
+      // }
      
     } else {
       alert('You need to login before you can save');

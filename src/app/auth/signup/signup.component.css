@@ -37,8 +37,7 @@
     justify-content: space-between;
     align-items: center
 }
-input,
-select{
+input{
 width: 43%;
 height: 2rem;
 padding: 10px 20px;
@@ -46,10 +45,18 @@ margin: 0.9rem;
 background: #EDEEFF;
 border-radius: 8px;
 border: none;
-}  
-select{
-    padding: 30px auto;
 }
+
+select {
+width: 48%;
+height: 3rem;
+padding: 10px 20px;
+margin: 0.9rem;
+background: #EDEEFF;
+border-radius: 8px;
+border: none;
+}
+
 .btn-create{
 width: 43%;
 height: 2rem;

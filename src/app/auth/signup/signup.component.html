@@ -7,41 +7,53 @@
         </div>
         <div class="rightSection">
             <h1>Let's Get Started</h1>
-            <form #myform="ngForm" (ngSubmit)="submit()" class="formBox" action="">
+            <form [formGroup]="regForm" (ngSubmit)="submit()" class="formBox" action="">
                 <div class="col-2">
-                 <input type="text" placeholder="Firstname" [(ngModel)]="form.firstName" id="firstname" name="firstname">
-                 <input type="text" placeholder="Lastname" [(ngModel)]="form.lastName" name="lastname">
+                 <input formControlName="firstName" type="text" placeholder="Firstname" [(ngModel)]="form.firstName" id="firstname" name="firstname" required>
+                 <p class="formCourseerror" *ngIf="regForm.controls['firstName'].touched && regForm.hasError('required', 'firstName')" style="color: red;">First Name is required</p>
+                 <input formControlName="lastName" type="text" placeholder="Lastname" [(ngModel)]="form.lastName" name="lastname" required>
+                 <p class="formCourseerror" *ngIf="regForm.controls['lastName'].touched && regForm.hasError('required', 'lastName')" style="color: red;">Last Name is required</p>
                 </div>
                 <div class="col-2">
-                 <input type="text" placeholder="Email" [(ngModel)]="form.email" name="email">
-                 <input type="password" placeholder="Password" [(ngModel)]="form.password" id="password" name="password">
+                 <input formControlName="email" type="text" placeholder="Email" [(ngModel)]="form.email" name="email" required>
+                 <p class="formCourseerror" *ngIf="regForm.controls['email'].touched && regForm.hasError('required', 'email')" style="color: red;">Email is required</p>
+                 <p class="formCourseerror" *ngIf="regForm.controls['email'].touched && regForm.hasError('pattern', 'email')" style="color: red;">Enter a valid email address</p>
+                 <input formControlName="password" type="password" placeholder="Password" [(ngModel)]="form.password" id="password" name="password" required>
+                 <p class="formCourseerror" *ngIf="regForm.controls['password'].touched && regForm.hasError('required', 'password')" style="color: red;">Password is required</p>
                 </div>
                 <div class="col-2">
                     <!-- <input type="text" placeholder="Department" [(ngModel)]="form.department" id="department" name="department"> -->
-                    <select class="form-control" name="course_code" id="course_code" [(ngModel)]="form.department">
-                        <option>Select Department</option>
+                    <select formControlName="department" class="form-control" name="course_code" id="course_code" [(ngModel)]="form.department" required>
+                        <option value="">---Select Department---</option>
                         <option>Computer Science</option>
                         <option>Pharmacy</option>
                         <option>Medicine</option>
                         <option>History</option>
                         <option>Agriculture</option>
                     </select>
-                    <input type="number" placeholder="Level" [(ngModel)]="form.level" id="level" name="level">
+                    <p class="formCourseerror" *ngIf="regForm.controls['department'].touched && regForm.hasError('required', 'department')" style="color: red;">Department is required</p>
+
+                    <input formControlName="level" type="number" placeholder="Level" [(ngModel)]="form.level" id="level" name="level" required>
+                    <p class="formCourseerror" *ngIf="regForm.controls['level'].touched && regForm.hasError('required', 'level')" style="color: red;">Level is required</p>
                 </div>
                  <div class="col-2">
-                 <input type="text" placeholder="Matric No" [(ngModel)]="form.matricno" id="matricno" name="matricno">
-                 <select class="form-control" name="course_code" id="course_code" [(ngModel)]="form.institution">
-                    <option>Select your Institution</option>
+                 <input type="text" maxlength="11" minlength="11" formControlName="marticNo" placeholder="Matric No" [(ngModel)]="form.marticNo" id="marticNo" name="marticNo" required>
+                 <p class="formCourseerror" *ngIf="regForm.controls['marticNo'].touched && regForm.hasError('required', 'marticNo')" style="color: red;">Matric No is required</p>
+                 <select formControlName="institution" class="form-control" name="course_code" id="course_code" [(ngModel)]="form.institution" required>
+                    <option value="">--Select your Institution---</option>
                     <option>IETECH</option>
                     <option>UNN</option>
                     <option>UI</option>
                     <option>UNILAG</option>
                     <option>OAU</option>
                 </select>
+
+                <p class="formCourseerror" *ngIf="regForm.controls['institution'].touched && regForm.hasError('required', 'institution')">Institution No is required</p>
+                
                  <!-- <input type="text" placeholder="Institution" [(ngModel)]="form.institution" id="institution" name="institution"> -->
                  </div>
                  <div class="col-2">
-                    <button type="submit" class="btn-create">Create Account</button>
+                    <button type="submit" class="btn-create" [disabled]="regForm.invalid">Create Account</button>
                     <div class="btn-white">Have an account Already?<span><a  href="/login"> Login</a></span></div>   
                  </div>
              </form>

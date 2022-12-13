@@ -134,3 +134,8 @@ color: #ffffff;
 list-style-type: none;
 text-align: left;
   }
+  .formCourseerror{
+    color: red;
+    font-size: 15px;
+
+  }

@@ -5,6 +5,6 @@ export interface Signup{
     password: string,
     department: string,
     level: any,
-    matricno: any,
+    marticNo: any,
     institution: string
 }
